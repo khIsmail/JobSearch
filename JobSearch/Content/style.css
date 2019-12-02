@@ -1,0 +1,18 @@
+﻿nav {
+    background-color: #139add;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
+}
+
+footer {
+    background-color: rgba(246, 245, 247, 0.63);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #c1e4f1;
+}
+
+.navbar-light .navbar-brand {
+    color: #c1e4f1;
+}
+
+

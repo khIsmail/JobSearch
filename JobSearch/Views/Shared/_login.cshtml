@@ -1,0 +1,78 @@
+﻿
+@using Microsoft.AspNet.Identity
+@using WebApplication1.Models
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoff" }))
+    {
+        var db = new ApplicationDbContext();
+        var UserID = User.Identity.GetUserId();
+        var CurrentUser = db.Users.Where(a => a.Id == UserID).SingleOrDefault();
+        @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="" data-toggle="dropdown" style="color:#f6f5f7db; text-decoration:none;">
+                    <span class="fa fa-user"></span>
+                    <strong>Welcome @CurrentUser.UserName</strong>
+
+                    <span class="fa fa-chevron-down"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <div style="padding:10px; padding-bottom:0px; width:280px;">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <p class="text-center">
+                                        <span class="fa fa-user" style="font-size:90px;"></span>
+                                    </p>
+                                </div>
+                                <div class="col-lg-8">
+                                    <p class="text-left">
+                                        <strong>
+                                            @CurrentUser.UserName
+                                        </strong>
+                                    </p>
+                                    @if (CurrentUser.UserType == "Authors")
+                                    {
+                                        <a href="~/Home/GetJobsByPublishers" class="btn btn-success btn-block">Published jobs</a>
+                                        <a href="~/Jobs/Create" class="btn btn-success btn-block">Add a new job</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="~/Home/GetJobsByUser" class="btn btn-success btn-block">Applied jobs</a>
+                                    }
+                                    <a href="~/Account/EditProfile" class="btn btn-primary btn-block">Account Parameter</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown-divider">
+
+                    </li>
+                    <li>
+                        <div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <p>
+                                        <a class="btn btn-danger btn-block" href="javascript:document.getElementById('logoff').submit()" >Log Off</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        
+        @*
+        <a class="nav-item nav-link" href="#">@Html.ActionLink("Welcome " + User.Identity.GetUserName(), "Index", "Manage")</a>
+        <a class="nav-item nav-link" href="javascript:document.getElementById('logoff').submit()">Log Off</a> *@
+    }
+}
+else
+{
+
+    <a class="nav-item nav-link" href="~/Account/Login">Sign In</a>
+    <a class="nav-item nav-link" href="~/Account/Register">Subscribe</a>
+}

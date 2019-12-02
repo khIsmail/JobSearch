@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link href="~/Content/Style.css" rel="stylesheet" />
+
+</head>
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <a class="navbar-brand" href="~/Home">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link " href="~/Home">Home <span class="sr-only">(current)</span></a>
+
+                <a class="nav-item nav-link" href="~/Home/About">About Us</a>
+                <a class="nav-item nav-link" href="~/Home/Contact">Contact Us</a>
+                @using (Html.BeginForm("Search","Home",FormMethod.Post))
+                {
+                    <input type="text" name="searchName" id="searchName" placeholder="Search..."
+                           style="width:250px; border:2px solid #ccc;
+                           border-radius:5px;background-color:white; margin-top:5px; margin-left:500px; margin-right:20px;" />
+                }
+
+
+
+                <!--Partial Login-->
+
+                @Html.Partial("_login")
+            </div>
+        </div>
+    </nav>
+    <div class="container" style="min-height:550px;">
+        <div class="row">
+            @RenderBody()
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer font-small blue pt-4 ">
+
+        <!-- Footer Links -->
+        <div class="container-fluid text-center text-md-left">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-6 mt-md-0 mt-3">
+
+                    <!-- Content -->
+                    <h5 class="text-uppercase">Footer Content</h5>
+                    <p>Here you can use rows and columns to organize your footer content.</p>
+
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h5 class="text-uppercase">Usefull Links</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="~/Jobs/ShowPublicJobs"> Public sector jobs</a>
+                        </li>
+                        <li>
+                            <a href="~/Jobs/ShowPrivateJobs"> Private Sector Jobs</a>
+                        </li>
+                        <li>
+                            <a href="~/Jobs/ShowOutsideJobs">Jobs outside the country</a>
+                        </li>
+                        <li>
+                            <a href="~/Jobs/ShowOtherJobs">Other Jobs</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h5 class="text-uppercase">Contact Us</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Facebook</a>
+                        </li>
+                        <li>
+                            <a href="#!">Twitter</a>
+                        </li>
+                        <li>
+                            <a href="#!">Youtube</a>
+                        </li>
+                        <li>
+                            <a href="#!">Send us a message</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            © 2019 Copyright:
+            <a href="#"> Microsoft Issatso Club</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("scripts",required:false)
+
+</body>
+</html>
+
